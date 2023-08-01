@@ -1,0 +1,9 @@
+.input {
+    display: block;
+    width: 325px;
+
+}
+
+.closeBtn {
+    border-radius: 50%;
+}
