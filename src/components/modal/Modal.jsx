@@ -13,7 +13,7 @@ const customStyles = {
   }
 };
 
-Modal.setAppElement('#container');
+// Modal.setAppElement('container');
 
 const ModalWindow = ({modalIsOpen, closeModal}) => {
 //   let subtitle;
@@ -24,7 +24,7 @@ const ModalWindow = ({modalIsOpen, closeModal}) => {
 //   }
 
   return (
-    <div>
+    <div id='container'>
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
