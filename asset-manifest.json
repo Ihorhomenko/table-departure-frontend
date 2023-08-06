@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/table-departure-frontend/static/css/main.adcb261e.css",
-    "main.js": "/table-departure-frontend/static/js/main.1213490c.js",
+    "main.js": "/table-departure-frontend/static/js/main.f0fc407e.js",
     "index.html": "/table-departure-frontend/index.html",
     "main.adcb261e.css.map": "/table-departure-frontend/static/css/main.adcb261e.css.map",
-    "main.1213490c.js.map": "/table-departure-frontend/static/js/main.1213490c.js.map"
+    "main.f0fc407e.js.map": "/table-departure-frontend/static/js/main.f0fc407e.js.map"
   },
   "entrypoints": [
     "static/css/main.adcb261e.css",
-    "static/js/main.1213490c.js"
+    "static/js/main.f0fc407e.js"
   ]
 }
