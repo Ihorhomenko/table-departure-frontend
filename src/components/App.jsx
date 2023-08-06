@@ -7,19 +7,26 @@ import { getTransactions } from "./services/api/api";
 export const App = () => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
+  const [isUpdate, setisUpdate] = useState(false)
 
   useEffect(() => {
     getTransactions().then(data => setTransactions(data))
-  }, [])
+  }, [transactions])
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
   }
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
+    setisUpdate(false);
   }
+
+  const isUpDateTransaction = () => {
+    setisUpdate(true)
+  }
+
 
 
   return (
@@ -34,8 +41,8 @@ export const App = () => {
       // }}
     >
       {/* Hello world */}
-      <ModalWindow modalIsOpen={modalIsOpen} closeModal={closeModal}/>
-      <Table transactions={transactions}/>
+      <ModalWindow modalIsOpen={modalIsOpen} closeModal={closeModal} isUpdate={isUpdate}/>
+      <Table transactions={transactions} openModal={openModal} isUpDateTransaction={isUpDateTransaction}/>
       <AddBtn openModal={openModal}/>
     </div>
   );

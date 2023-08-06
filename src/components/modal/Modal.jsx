@@ -1,6 +1,7 @@
 import Modal from 'react-modal'
 import { Formik, Field, Form } from 'formik';
 import "./modal.css"
+import { addTransactions } from 'components/services/api/api';
 
 const customStyles = {
   content: {
@@ -15,7 +16,7 @@ const customStyles = {
 
 Modal.setAppElement('#modal');
 
-const ModalWindow = ({modalIsOpen, closeModal}) => {
+const ModalWindow = ({modalIsOpen, closeModal, isUpdate}) => {
 //   let subtitle;
   
 
@@ -47,9 +48,9 @@ const ModalWindow = ({modalIsOpen, closeModal}) => {
                 payment: '',
                 cost: ''
             }}
-            onSubmit={async (values) => {
-                await new Promise((r) => setTimeout(r, 500));
-                alert(JSON.stringify(values, null, 2));
+            onSubmit={(values) => {
+                addTransactions(values)
+
                 closeModal()
             }}
             >
@@ -84,7 +85,7 @@ const ModalWindow = ({modalIsOpen, closeModal}) => {
                 <label htmlFor="cost">Собівартість</label>
                 <Field className='input' id="cost" name="cost" placeholder="120"/>
 
-                <button  type="submit">Submit</button>
+                {isUpdate ? <button type='button'>Зберегти</button> : <button  type="submit">Відправити</button>}
             </Form>
             </Formik>
                 </div>

@@ -1,8 +1,19 @@
 // import transactions from "../../transactions.json"
 import "./table.css"
+import { removeTransactions } from "components/services/api/api"
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
-const Table = ({transactions}) => {
+const Table = ({transactions, isUpDateTransaction, openModal}) => {
     
+    const onDelBtnClick = (id) => {
+        console.log(id)
+        removeTransactions(id)
+    }
+
+    const onUpdBtnClick = () => {
+        isUpDateTransaction()
+        openModal()
+    }
 
 
     return (
@@ -41,7 +52,13 @@ const Table = ({transactions}) => {
                         <td>{el.balanceToBePaid}</td>
                         <td>{el.cost}</td>
                         <td>{el.earnings}</td>
-                        <td>{el.percentEarning}</td>
+                        <td>{parseFloat(el.percentEarning.toFixed(2))}</td>
+                        <td>
+                            <AiFillDelete className="btn-table btb-del" onClick={() => onDelBtnClick(el._id)}/>
+                        </td>
+                        <td>
+                            <AiFillEdit className="btn-table btn-upd" onClick={() => onUpdBtnClick()}/>
+                        </td>
                    </tr>
                 ))}
                 

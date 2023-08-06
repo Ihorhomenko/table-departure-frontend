@@ -10,3 +10,14 @@ const instance = axios.create({
     // console.log(data)
     return data;
   };
+
+  export const addTransactions = async (data) => {
+    const {data: result} = await instance.post('/transactions', data);
+    
+    return result;
+}
+
+export const removeTransactions = async (id) => {
+  const {data: result} = await instance.delete(`/transactions/${id}`);
+  return result;
+}

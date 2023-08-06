@@ -12,3 +12,16 @@
 
     font-size: 12px;
 }
+
+.btn-table{
+    font-size: 18px;
+    transition: all 250ms linear;
+}
+
+.btb-del:hover{
+    color: rgb(247, 13, 13)
+}
+
+.btn-upd:hover{
+    color: rgb(23, 209, 23)
+}
