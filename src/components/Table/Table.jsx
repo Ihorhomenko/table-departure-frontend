@@ -1,9 +1,13 @@
 import transactions from "../../transactions.json"
 import "./table.css"
+import { getTransactions } from "components/services/api/api"
 
 const Table = () => {
+    getTransactions()
+
+
     return (
-        <table class="table table-hover table-dark">
+        <table className="table table-hover table-dark">
             <thead>
                 <tr>
                     <th scope="col">Тип товару</th>
