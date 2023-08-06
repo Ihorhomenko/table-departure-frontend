@@ -1,11 +1,17 @@
 import Table from "./Table/Table";
 import AddBtn from "./AddBut/AddBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWindow from "./modal/Modal";
+import { getTransactions } from "./services/api/api";
 
 export const App = () => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [transactions, setTransactions] = useState([])
+
+  useEffect(() => {
+    getTransactions().then(data => setTransactions(data))
+  }, [])
 
   function openModal() {
     setIsOpen(true);
@@ -14,6 +20,7 @@ export const App = () => {
   function closeModal() {
     setIsOpen(false);
   }
+
 
   return (
     <div className="container"
@@ -28,7 +35,7 @@ export const App = () => {
     >
       {/* Hello world */}
       <ModalWindow modalIsOpen={modalIsOpen} closeModal={closeModal}/>
-      <Table/>
+      <Table transactions={transactions}/>
       <AddBtn openModal={openModal}/>
     </div>
   );

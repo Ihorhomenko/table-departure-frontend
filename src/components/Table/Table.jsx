@@ -1,9 +1,8 @@
-import transactions from "../../transactions.json"
+// import transactions from "../../transactions.json"
 import "./table.css"
-import { getTransactions } from "components/services/api/api"
 
-const Table = () => {
-    getTransactions()
+const Table = ({transactions}) => {
+    
 
 
     return (
@@ -28,7 +27,7 @@ const Table = () => {
             </thead>
             <tbody>
                 {transactions.map(el => (
-                    <tr>
+                    <tr key={el._id}>
                         <td>{el.typeProduct}</td>
                         <td>{el.product}</td>
                         <td>{el.quantity}</td>

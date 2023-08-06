@@ -7,6 +7,6 @@ const instance = axios.create({
 
   export const getTransactions = async () => {
     const { data }  = await instance.get('/transactions');
-    console.log(data)
+    // console.log(data)
     return data;
   };

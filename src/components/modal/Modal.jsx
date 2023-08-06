@@ -13,7 +13,7 @@ const customStyles = {
   }
 };
 
-// Modal.setAppElement('container');
+Modal.setAppElement('#modal');
 
 const ModalWindow = ({modalIsOpen, closeModal}) => {
 //   let subtitle;
