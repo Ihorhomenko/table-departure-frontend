@@ -6,7 +6,6 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 const Table = ({transactions, isUpDateTransaction, openModal, addEditTransaction}) => {
     
     const onDelBtnClick = (id) => {
-        console.log(id)
         removeTransactions(id)
     }
 

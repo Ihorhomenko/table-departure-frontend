@@ -1,10 +1,12 @@
 import { Formik, Field, Form,  ErrorMessage} from 'formik';
 import { addTransactions } from 'components/services/api/api';
+import { upDateTransation } from 'components/services/api/api';
 import "./form.css"
 
 
 const FormModal = ({isUpdate, closeModal, editTransaction}) => {
-
+   
+        
     const initialValues = editTransaction ? {
         typeProduct: editTransaction.typeProduct,
         product: editTransaction.product,
@@ -29,6 +31,7 @@ const FormModal = ({isUpdate, closeModal, editTransaction}) => {
         payment: '',
         cost: ''
     }
+
     
     const validate = (values) => {
         const errors = {};
@@ -45,7 +48,7 @@ const FormModal = ({isUpdate, closeModal, editTransaction}) => {
         if (!values.name) {
             errors.name = 'Введіть ПІБ замовника';
         }
-        if (!values.telNumbert) {
+        if (!values.telNumber) {
             errors.telNumber = 'Введіть номер телефону замовника';
         }
         if (!values.town) {
@@ -67,6 +70,11 @@ const FormModal = ({isUpdate, closeModal, editTransaction}) => {
         return errors;
       }
 
+      const onClickUpdate = (values) => {
+        upDateTransation(editTransaction._id, values)
+        closeModal()
+      }
+
 return (
     <>
     
@@ -78,15 +86,12 @@ return (
 
     onSubmit={(values) => {
         addTransactions(values)
-
         closeModal()
     }}
 
-    // onClickUpdate = {(values) => {
-    //     console.log(values)
-    // }}
     >
-    <Form className='form'>
+    {({values}) => (
+        <Form className='form'>
         <label htmlFor="typeProduct">Тип товару</label>
         <Field className='input' id="typeProduct" name="typeProduct" placeholder="Каблучка" />
         <ErrorMessage name="typeProduct" component="p" className='error-massge' />
@@ -127,8 +132,10 @@ return (
         <Field className='input' id="cost" name="cost" placeholder="120"/>
         <ErrorMessage name="cost" component="p" className='error-massge'/>
         
-        {isUpdate ? <button type='button'>Зберегти</button> : <button  type="submit">Відправити</button>}
+        {isUpdate ? <button type='button' onClick={() => onClickUpdate(values)}>Зберегти</button> : <button  type="submit">Відправити</button>}
     </Form>
+)}
+    
     </Formik>
     </>
     

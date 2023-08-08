@@ -3,6 +3,9 @@ import FormModal from 'components/form/form';
 import "./modal.css"
 
 const customStyles = {
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
   content: {
     top: '50%',
     left: '50%',
@@ -10,24 +13,18 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    background: 'rgba(0, 0, 0, 0.8)'
   }
+  
 };
 
 Modal.setAppElement('#modal');
 
 const ModalWindow = ({modalIsOpen, closeModal, isUpdate, editTransaction}) => {
-//   let subtitle;
-  
-
-//   function afterOpenModal() {
-//     subtitle.style.color = '#f00';
-//   }
 
   return (
-    <div id='container'>
       <Modal
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
@@ -35,9 +32,8 @@ const ModalWindow = ({modalIsOpen, closeModal, isUpdate, editTransaction}) => {
         <button className='closeBtn' onClick={closeModal}>X</button>
         <div>
           <FormModal closeModal={closeModal} isUpdate={isUpdate} editTransaction={editTransaction}/>
-                </div>
-            </Modal>
         </div>
+      </Modal>
   );
 }
 

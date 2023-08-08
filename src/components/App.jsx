@@ -37,17 +37,7 @@ export const App = () => {
 
 
   return (
-    <div className="container"
-      // style={{
-      //   height: '100vh',
-      //   display: 'flex',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   fontSize: 40,
-      //   color: '#010101'
-      // }}
-    >
-      {/* Hello world */}
+    <div className="container">
       <ModalWindow modalIsOpen={modalIsOpen} closeModal={closeModal} isUpdate={isUpdate} editTransaction={editTransaction}/>
       <Table transactions={transactions} openModal={openModal} isUpDateTransaction={isUpDateTransaction} addEditTransaction={addEditTransaction}/>
       <AddBtn openModal={openModal}/>

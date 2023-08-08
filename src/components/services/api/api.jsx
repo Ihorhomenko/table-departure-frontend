@@ -21,3 +21,8 @@ export const removeTransactions = async (id) => {
   const {data: result} = await instance.delete(`/transactions/${id}`);
   return result;
 }
+
+export const upDateTransation = async (id, data) => {
+  const {data: result} = await instance.put(`/transactions/${id}`, data)
+  return result;
+}
