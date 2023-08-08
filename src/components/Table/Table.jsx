@@ -3,17 +3,18 @@ import "./table.css"
 import { removeTransactions } from "components/services/api/api"
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
-const Table = ({transactions, isUpDateTransaction, openModal}) => {
+const Table = ({transactions, isUpDateTransaction, openModal, addEditTransaction}) => {
     
     const onDelBtnClick = (id) => {
         console.log(id)
         removeTransactions(id)
     }
 
-    const onUpdBtnClick = () => {
+    const onUpdBtnClick = (data) => {
         isUpDateTransaction()
         openModal()
-    }
+        addEditTransaction(data)
+     }
 
 
     return (
@@ -57,7 +58,7 @@ const Table = ({transactions, isUpDateTransaction, openModal}) => {
                             <AiFillDelete className="btn-table btb-del" onClick={() => onDelBtnClick(el._id)}/>
                         </td>
                         <td>
-                            <AiFillEdit className="btn-table btn-upd" onClick={() => onUpdBtnClick()}/>
+                            <AiFillEdit className="btn-table btn-upd" onClick={() => onUpdBtnClick(el)}/>
                         </td>
                    </tr>
                 ))}

@@ -1,0 +1,12 @@
+.error-massge {
+    font-style: italic;
+    color: red;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}

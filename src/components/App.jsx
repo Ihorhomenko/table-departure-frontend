@@ -9,10 +9,12 @@ export const App = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [isUpdate, setisUpdate] = useState(false)
+  const [editTransaction, setEditTransaction] = useState(null)
 
   useEffect(() => {
     getTransactions().then(data => setTransactions(data))
   }, [transactions])
+
 
   const openModal = () => {
     setIsOpen(true);
@@ -21,10 +23,15 @@ export const App = () => {
   const closeModal = () => {
     setIsOpen(false);
     setisUpdate(false);
+    setEditTransaction(null)
   }
 
   const isUpDateTransaction = () => {
     setisUpdate(true)
+  }
+
+  const addEditTransaction = (data) => {
+    setEditTransaction(data)
   }
 
 
@@ -41,8 +48,8 @@ export const App = () => {
       // }}
     >
       {/* Hello world */}
-      <ModalWindow modalIsOpen={modalIsOpen} closeModal={closeModal} isUpdate={isUpdate}/>
-      <Table transactions={transactions} openModal={openModal} isUpDateTransaction={isUpDateTransaction}/>
+      <ModalWindow modalIsOpen={modalIsOpen} closeModal={closeModal} isUpdate={isUpdate} editTransaction={editTransaction}/>
+      <Table transactions={transactions} openModal={openModal} isUpDateTransaction={isUpDateTransaction} addEditTransaction={addEditTransaction}/>
       <AddBtn openModal={openModal}/>
     </div>
   );

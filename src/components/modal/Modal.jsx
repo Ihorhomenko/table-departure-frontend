@@ -1,7 +1,6 @@
 import Modal from 'react-modal'
-import { Formik, Field, Form } from 'formik';
+import FormModal from 'components/form/form';
 import "./modal.css"
-import { addTransactions } from 'components/services/api/api';
 
 const customStyles = {
   content: {
@@ -16,7 +15,7 @@ const customStyles = {
 
 Modal.setAppElement('#modal');
 
-const ModalWindow = ({modalIsOpen, closeModal, isUpdate}) => {
+const ModalWindow = ({modalIsOpen, closeModal, isUpdate, editTransaction}) => {
 //   let subtitle;
   
 
@@ -35,59 +34,7 @@ const ModalWindow = ({modalIsOpen, closeModal, isUpdate}) => {
       >
         <button className='closeBtn' onClick={closeModal}>X</button>
         <div>
-            <Formik
-            initialValues={{
-                typeProduct: '',
-                product: '',
-                quantity: '',
-                name: '',
-                telNumber: '',
-                town: '',
-                post: '',
-                price: '',
-                payment: '',
-                cost: ''
-            }}
-            onSubmit={(values) => {
-                addTransactions(values)
-
-                closeModal()
-            }}
-            >
-            <Form>
-                <label htmlFor="typeProduct">Тип товару</label>
-                <Field className='input' id="typeProduct" name="typeProduct" placeholder="Каблучка" />
-
-                <label htmlFor="product">Найменування товару</label>
-                <Field className='input' id="product" name="product" placeholder="Золоте серце + перлина" />
-
-                <label htmlFor="quantity">Кількість</label>
-                <Field className='input' id="quantity" name="quantity" placeholder="1"/>
-                
-                <label htmlFor="name">ПІБ отримувача</label>
-                <Field className='input' id="name" name="name" placeholder="Ігор Хоменко"/>
-
-                <label htmlFor="telNumber">Номер телефону</label>
-                <Field className='input' id="telNumber" name="telNumber" placeholder="0631234563"/>
-
-                <label htmlFor="town">Місто отримувача</label>
-                <Field className='input' id="town" name="town" placeholder="Київ"/>
-
-                <label htmlFor="post">Відділення НП</label>
-                <Field className='input' id="post" name="post" placeholder="Відділення 24"/>
-
-                <label htmlFor="price">Ціна</label>
-                <Field className='input' id="price" name="price" placeholder="250"/>
-                
-                <label htmlFor="payment">Оплачено</label>
-                <Field className='input' id="payment" name="payment" placeholder="250"/>
-
-                <label htmlFor="cost">Собівартість</label>
-                <Field className='input' id="cost" name="cost" placeholder="120"/>
-
-                {isUpdate ? <button type='button'>Зберегти</button> : <button  type="submit">Відправити</button>}
-            </Form>
-            </Formik>
+          <FormModal closeModal={closeModal} isUpdate={isUpdate} editTransaction={editTransaction}/>
                 </div>
             </Modal>
         </div>
