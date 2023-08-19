@@ -1,0 +1,21 @@
+.loginPageContainer{
+    width: 100%;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formLogin {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: aliceblue;
+    margin: auto;
+}
+.inputlogin{
+    width: 200px;
+}
+
+.btnLogin{
+    width: 100px;
+}

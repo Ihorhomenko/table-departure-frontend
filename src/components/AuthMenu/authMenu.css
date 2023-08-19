@@ -1,0 +1,29 @@
+.authMenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.authName {
+    display: block;
+    color: #212529;
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .authBtn {
+    display: block;
+    outline: none;
+    border: 1px solid #212529;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: inherit;
+    color: #212529;
+  
+    transition: all 350ms linear;
+  }
+  
+  .authBtn:hover {
+    background-color: aliceblue;
+  }
